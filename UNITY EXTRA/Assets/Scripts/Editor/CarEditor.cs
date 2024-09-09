@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using NaughtyAttributes;
 
 [CustomEditor(typeof(Car))]
 public class CarEditor : Editor
@@ -11,6 +12,7 @@ public class CarEditor : Editor
         //base.OnInspectorGUI();
         Car myTarget = (Car)target;
 
+        myTarget.carPrefab = (GameObject)EditorGUILayout.ObjectField(myTarget.carPrefab, typeof(GameObject), true);
         myTarget.speed = EditorGUILayout.IntField("Minha Velocidade", myTarget.speed);
         myTarget.gear = EditorGUILayout.IntField("Marcha", myTarget.gear);
 
@@ -21,6 +23,13 @@ public class CarEditor : Editor
         if (myTarget.TotalSpeed > 200)
         {
         EditorGUILayout.HelpBox("Velocidade acima do permitido!", MessageType.Error);
+        }
+
+        GUI.color = Color.magenta;
+
+        if (GUILayout.Button("Create Car"))
+        {
+            myTarget.CreateCar();
         }
     }
 }
