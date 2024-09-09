@@ -12,12 +12,18 @@ public static class ManciniUtils
     [UnityEditor.MenuItem("Mancini Menu/Test")]
     public static void Test()
     {
+        GameObject novoObjeto = new GameObject("Novo Objeto");
+        novoObjeto.transform.position = Vector3.zero;
+
         Debug.Log("Test");
     }
 
     [UnityEditor.MenuItem("Mancini Menu/Test 2 %g")]
     public static void Test2()
     {
+        GameObject novoObjeto = new GameObject("Novo Objeto");
+        novoObjeto.transform.position = Vector3.zero;
+        
         Debug.Log("Test2");
     }
 
