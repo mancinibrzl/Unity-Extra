@@ -19,7 +19,7 @@ namespace Screens
         public ScreenType screenType;
 
         public List<Transform> listOfObjects;
-        public List<Typper> listOfPhrases;
+        //public List<Typper> listOfPhrases;
 
         public Image uiBackground;
         public bool startHided = false;
@@ -55,6 +55,11 @@ namespace Screens
             listOfObjects.ForEach(i => i.gameObject.SetActive(false));
             uiBackground.enabled = false;
         }
+        private void ForceShowObjects()
+        {
+            listOfObjects.ForEach(i => i.gameObject.SetActive(true));
+            uiBackground.enabled = true;
+        }
 
         private void ShowObjects()
         {
@@ -66,7 +71,7 @@ namespace Screens
                 obj.DOScale(0, animationDuration).From().SetDelay(i * delayBetweenObjects);
             }
 
-            Invoke(nameof(StartType), delayBetweenObjects * listOfObjects.Count);
+           /* Invoke(nameof(StartType), delayBetweenObjects * listOfObjects.Count);
             uiBackground.enabled = true;
         }
 
@@ -76,13 +81,9 @@ namespace Screens
             {
                 listOfPhrases[i].StartType();
             }
-        }
+        }*/
 
-        private void ForceShowObjects()
-        {
-            listOfObjects.ForEach(i => i.gameObject.SetActive(true));
-            uiBackground.enabled = true;
-        }
     }
 
+}
 }
